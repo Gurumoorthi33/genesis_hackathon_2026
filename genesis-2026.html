@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GENESIS 2026 - Pioneering AI Technology in Healthcare</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #6BAA3D;
+            --dark-blue: #1E3A5F;
+            --light-green: #E8F5E9;
+            --white: #FFFFFF;
+            --gray-light: #F5F5F5;
+            --gray-dark: #333333;
+            --accent-gold: #D4AF37;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--white);
+            color: var(--gray-dark);
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-blue) 100%);
+            color: var(--white);
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .logo {
+            width: 45px;
+            height: 45px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--primary-green);
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .logo-text h1 {
+            font-size: 22px;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .logo-text p {
+            font-size: 11px;
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            flex: 1;
+            justify-content: center;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--white);
+            transition: 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: var(--dark-blue);
+            flex-direction: column;
+            gap: 0;
+            z-index: 99;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .mobile-menu a {
+            padding: 15px 20px;
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(107, 170, 61, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .mobile-menu.active {
+                display: flex;
+            }
+
+            .header-container {
+                flex-wrap: wrap;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-blue) 100%);
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            opacity: 0.95;
+        }
+
+        .event-info {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .info-item {
+            background: rgba(255,255,255,0.1);
+            padding: 15px 25px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            display: none;
+            padding: 40px 0;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        /* Gallery Carousel */
+        .gallery-section {
+            background: var(--light-green);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .gallery-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .carousel {
+            position: relative;
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .carousel-slide {
+            display: none;
+            width: 100%;
+            height: 400px;
+            background: #e0e0e0;
+            justify-content: center;
+            align-items: center;
+            color: #999;
+            font-size: 18px;
+        }
+
+        .carousel-slide.active {
+            display: flex;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .carousel-nav:hover {
+            background: rgba(0,0,0,0.8);
+        }
+
+        .carousel-prev {
+            left: 15px;
+        }
+
+        .carousel-next {
+            right: 15px;
+        }
+
+        .carousel-dots {
+            text-align: center;
+            padding: 15px;
+            background: var(--white);
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #bbb;
+            margin: 0 5px;
+            cursor: pointer;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .dot.active {
+            background: var(--primary-green);
+            width: 30px;
+            border-radius: 5px;
+        }
+
+        /* Section Header */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--primary-green);
+        }
+
+        .section-header h2 {
+            font-size: 28px;
+            color: var(--dark-blue);
+        }
+
+        .toggle-btn {
+            background: var(--primary-green);
+            color: var(--white);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .toggle-btn:hover {
+            background: var(--dark-blue);
+        }
+
+        /* Schedule Grid */
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .schedule-card {
+            background: var(--white);
+            border: 2px solid var(--light-green);
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+
+        .schedule-card:hover {
+            box-shadow: 0 8px 20px rgba(107, 170, 61, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .schedule-card .time {
+            color: var(--primary-green);
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .schedule-card .topic {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark-blue);
+        }
+
+        .schedule-card .speaker {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 12px;
+        }
+
+        .view-btn {
+            background: var(--primary-green);
+            color: var(--white);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        .view-btn:hover {
+            background: var(--dark-blue);
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--primary-green);
+        }
+
+        .timeline-item {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 0;
+            margin-right: 50%;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 50%;
+            margin-right: 0;
+            text-align: left;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            background: var(--primary-green);
+            border: 4px solid var(--white);
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 0 0 4px var(--primary-green);
+        }
+
+        .timeline-content {
+            background: var(--light-green);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .timeline-content .time {
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-bottom: 5px;
+        }
+
+        .timeline-content .activity {
+            font-size: 16px;
+            color: var(--dark-blue);
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 50px;
+                margin-right: 0;
+                text-align: left;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+        }
+
+        /* Speaker Grid */
+        .speakers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .speaker-card {
+            background: var(--white);
+            border: 2px solid var(--light-green);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .speaker-card:hover {
+            box-shadow: 0 8px 20px rgba(107, 170, 61, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .speaker-photo {
+            width: 100%;
+            height: 250px;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+            overflow: hidden;
+        }
+
+        .speaker-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .speaker-info {
+            padding: 20px;
+        }
+
+        .speaker-info .name {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 5px;
+        }
+
+        .speaker-info .title {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        /* Leadership Grid */
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .leader-card {
+            background: var(--white);
+            border: 2px solid var(--light-green);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .leader-card:hover {
+            box-shadow: 0 8px 20px rgba(107, 170, 61, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .leader-photo {
+            width: 100%;
+            height: 280px;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+            overflow: hidden;
+        }
+
+        .leader-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .leader-info {
+            padding: 20px;
+        }
+
+        .leader-info .name {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 5px;
+        }
+
+        .leader-info .title {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .leader-info .organization {
+            font-size: 12px;
+            color: var(--primary-green);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        /* Modal Popup */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            animation: fadeIn 0.3s;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            padding: 0;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            animation: slideUp 0.3s;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-blue) 100%);
+            color: var(--white);
+            padding: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 28px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .close-btn:hover {
+            opacity: 0.7;
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .modal-photo {
+            width: 100%;
+            height: 350px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .modal-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .detail-item {
+            margin-bottom: 18px;
+        }
+
+        .detail-label {
+            font-weight: 700;
+            color: var(--primary-green);
+            font-size: 12px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .detail-value {
+            color: var(--gray-dark);
+            font-size: 15px;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid var(--light-green);
+        }
+
+        .contact-link {
+            flex: 1;
+            padding: 12px;
+            background: var(--light-green);
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--primary-green);
+            font-weight: 600;
+            text-align: center;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .contact-link:hover {
+            background: var(--primary-green);
+            color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        /* Utility Classes */
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 26px;
+            }
+
+            .section-header h2 {
+                font-size: 22px;
+            }
+
+            .event-info {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .carousel-slide {
+                height: 300px;
+            }
+
+            .schedule-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .speakers-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+
+            .leadership-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="logo">G</div>
+                <div class="logo-text">
+                    <h1>GENESIS 2026</h1>
+                    <p>AI in Healthcare</p>
+                </div>
+            </div>
+            <nav id="mainNav">
+                <a href="#schedule" onclick="showSection('schedule')"> Schedule</a>
+                <a href="#flow" onclick="showSection('flow')"> Event Flow</a>
+                <a href="#speakers" onclick="showSection('speakers')"> Speakers</a>
+                <a href="#leadership" onclick="showSection('leadership')"> Leadership</a>
+                <a href="#gallery" onclick="showSection('gallery')"> Gallery</a>
+            </nav>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#schedule" onclick="showSection('schedule'); toggleMobileMenu()">Schedule</a>
+            <a href="#flow" onclick="showSection('flow'); toggleMobileMenu()"> Event Flow</a>
+            <a href="#speakers" onclick="showSection('speakers'); toggleMobileMenu()"> Speakers</a>
+            <a href="#leadership" onclick="showSection('leadership'); toggleMobileMenu()"> Leadership</a>
+            <a href="#gallery" onclick="showSection('gallery'); toggleMobileMenu()"> Gallery</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h2>GENESIS 2026</h2>
+        <p>Pioneering AI Technology in Healthcare (PATH)</p>
+        <div class="event-info">
+            <div class="info-item">
+                <strong>Date:</strong> 27 March 2026 (Friday)
+            </div>
+            <div class="info-item">
+                <strong>Time:</strong> 8:00 AM - 5:00 PM
+            </div>
+            <div class="info-item">
+                <strong>Venue:</strong> Dr. B.C. Roy Hall, TSRM Medical College
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Section -->
+    <section class="section active" id="gallery">
+        <div class="gallery-section">
+            <div class="gallery-container">
+                <h2 style="color: var(--dark-blue); margin-bottom: 30px;">Event Gallery</h2>
+                <div class="carousel">
+                    <div class="carousel-slide active">
+                        <img src="" alt="Event Photo 1" onerror="this.textContent='Click to add photo'">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="" alt="Event Photo 2" onerror="this.textContent='Click to add photo'">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="" alt="Event Photo 3" onerror="this.textContent='Click to add photo'">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="" alt="Event Photo 4" onerror="this.textContent='Click to add photo'">
+                    </div>
+                    <button class="carousel-nav carousel-prev" onclick="changeSlide(-1)">❮</button>
+                    <button class="carousel-nav carousel-next" onclick="changeSlide(1)">❯</button>
+                </div>
+                <div class="carousel-dots">
+                    <span class="dot active" onclick="currentSlide(0)"></span>
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section class="section" id="schedule">
+        <div class="container">
+            <div class="section-header">
+                <h2> Event Schedule</h2>
+                <button class="toggle-btn" onclick="toggleSchedule()">Hide All</button>
+            </div>
+            <div class="schedule-grid" id="scheduleGrid"></div>
+        </div>
+    </section>
+
+    <!-- Event Flow Section -->
+    <section class="section" id="flow">
+        <div class="container">
+            <div class="section-header">
+                <h2> Event Flow</h2>
+                <button class="toggle-btn" onclick="toggleFlow()">Hide All</button>
+            </div>
+            <div class="timeline" id="timeline"></div>
+        </div>
+    </section>
+
+    <!-- Speakers Section -->
+    <section class="section" id="speakers">
+        <div class="container">
+            <div class="section-header">
+                <h2> Guest Speakers</h2>
+                <button class="toggle-btn" onclick="toggleSpeakers()">Hide All</button>
+            </div>
+            <div class="speakers-grid" id="speakersGrid"></div>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section class="section" id="leadership">
+        <div class="container">
+            <div class="section-header">
+                <h2> Leadership & Organizers</h2>
+                <button class="toggle-btn" onclick="toggleLeadership()">Hide All</button>
+            </div>
+            <div class="leadership-grid" id="leadershipGrid"></div>
+        </div>
+    </section>
+
+    <!-- Modal for Details -->
+    <div class="modal" id="detailModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 GENESIS Conference | Trichy SRM Medical College | Pioneering AI Technology in Healthcare</p>
+    </footer>
+
+    <script>
+        // Data
+        const schedule = [
+            { time: "8:00am - 9:00am", topic: "Registration begins", speaker: "All Participants", interests: "Arrival & Check-in" },
+            { time: "9:00am - 9:30am", topic: "Introduction to the world of AI in healthcare", speaker: "Dr. J. Asha MDS.", interests: "AI Fundamentals, Dental Education" },
+            { time: "9:30am - 10:00am", topic: "Role of AI in clinical decision support", speaker: "Dr. M Praveen Kumar MD.", interests: "Clinical AI, Medical Practice" },
+            { time: "10:00am - 10:30am", topic: "AI in Radiology", speaker: "Dr. P Ganesh MDRD", interests: "Medical Imaging, AI Applications" },
+            { time: "10:30am - 10:40am", topic: "Tea break", speaker: "Networking", interests: "Refreshment" },
+            { time: "10:40am - 11:30am", topic: "Inauguration CEREMONY", speaker: "Dr. R. Shivakumar", interests: "Opening Address" },
+            { time: "11:30am - 12:00pm", topic: "Role of AI in dentistry", speaker: "Dr. T. Arun Kulandhaivelu MDS.", interests: "Dental AI, Healthcare Tech" },
+            { time: "12:00pm - 12:30pm", topic: "AI in drug discovery", speaker: "Dr. B R ASOKAN MD", interests: "Pharmaceutical AI, Research" },
+            { time: "12:30pm - 1:00pm", topic: "AI in precision medicine", speaker: "Dr. V. Senthilnathan", interests: "Personalized Medicine, Pharmacology" },
+            { time: "1:00pm - 1:30pm", topic: "Lunch break", speaker: "Networking", interests: "Refreshment" },
+            { time: "1:30pm - 2:00pm", topic: "Health data & ethics in AI", speaker: "Dr.P. Vannamayil", interests: "AI Ethics, Data Science" },
+            { time: "2:00pm - 2:30pm", topic: "Role of AI in Surgery", speaker: "Dr. Navaneetha .K MS", interests: "Surgical Technology, AI" },
+            { time: "2:30pm - 3:00pm", topic: "AI business strategy for healthcare", speaker: "Dr. Edukondalu A.D. MD", interests: "Healthcare Management" },
+            { time: "3:00pm - 3:30pm", topic: "Technical aspects for integration of AI in healthcare", speaker: "Dr. R. Balaji Ganesh ME, PhD.", interests: "AI Integration, Engineering" },
+            { time: "3:30pm - 4:00pm", topic: "Future trends of AI in healthcare", speaker: "Dr. R Jagadish kannan ME. PhD", interests: "Technology Trends, Research" },
+            { time: "4:00pm - 4:30pm", topic: "Panel Discussion", speaker: "Mr. M. Rufus Shakin MBA", interests: "Expert Panel Discussion" },
+            { time: "4:30pm - 5:00pm", topic: "Poster presentation – prize distribution", speaker: "All students", interests: "Awards & Recognition" }
+        ];
+
+        const timeline = [
+            { time: "8:00am", activity: "Registration Opens" },
+            { time: "9:00am", activity: "Welcome Address & Introduction to AI in Healthcare" },
+            { time: "10:30am", activity: "Tea Break" },
+            { time: "10:40am", activity: "Inauguration Ceremony" },
+            { time: "12:00pm", activity: "Multiple Technical Sessions" },
+            { time: "1:00pm", activity: "Lunch Break" },
+            { time: "2:00pm", activity: "Advanced Topics & Applications" },
+            { time: "4:00pm", activity: "Panel Discussion" },
+            { time: "4:30pm", activity: "Poster Presentations & Prize Distribution" }
+        ];
+
+        const speakers = [
+            { 
+                name: "Mr.BD Vijaya", 
+                title: "Chief Guest", 
+                organization: "CTO, Motherson Health and Medical",
+                photo: "BD Vijaya.jpeg",
+                linkedin: "https://www.linkedin.com/in/bd-vijaya?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+            },
+            { 
+                name: "Dr. J. Asha MDS", 
+                title: "Associate Professor", 
+                organization: "Department of Dentistry, TSRMMCH&RC",
+                photo: "asha.jpeg",
+                email: "ashajeyakumar@gmail.com ",
+            },
+            { 
+                name: "Dr. M Praveen Kumar MD", 
+                title: "Associate Professor", 
+                organization: "General Medicine, TSRMMCH&RC",
+                photo: "praveen.jpeg",
+                linkedin: "https://www.linkedin.com/in/praveen-kumar-24993b1b0?trk=contact-info"
+            },
+            { 
+                name: "Dr. P Ganesh MDRD", 
+                title: "Assistant Professor", 
+                organization: "Radiology, TSRMMCH&RC",
+                photo: "ganesh.jpeg",
+                email: "ganeshpps13@gmail.com",
+                linkedin: "https://linkedin.com/in/pganesh-radiology"
+            },
+            { 
+                name: "Dr. A. Suguna MD", 
+                title: "Research Fellow", 
+                organization: "Public Health, TSRMMCH&RC",
+                photo: "suguna.jpeg",
+                linkedin: "https://www.linkedin.com/in/suguna-a-3a51ab348?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+            },
+            { 
+                name: "Dr. T. Arun Kulandhaivel MDS", 
+                title: "Corporate Head", 
+                organization: "32 Dental Care",
+                photo: "arun.jpeg",
+                linkedin: "https://www.linkedin.com/in/dr-t-arun-kulandai-velu-mds-m-laser-dentistry-a6993a41?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+            },
+            { 
+                name: "Dr. B R ASOKAN MD", 
+                title: "Professor & HOD", 
+                organization: "Pharmacology, TSRMMCH&RC",
+                photo: "ashokan.png",
+            },
+            { 
+                name: "Dr. V. Senthilnathan PharmD", 
+                title: "Clinical Pharmacist", 
+                organization: "TSRMMCH&RC",
+                photo: "senthil.jpeg",
+                linkedin: "linkedin.com/in/dr-senthilnathan-vijayarathinam-5a581a22b"
+            },
+            { 
+                name: "Dr.P. Vannamayil MSc, PhD", 
+                title: "Professor", 
+                organization: "Biostatistics & Research, TSRMMCH&RC",
+                photo: "vanamayil.jpeg",
+                
+            },
+            { 
+                name: "Dr. Navaneetha K MS", 
+                title: "Associate Professor", 
+                organization: "Surgery, TSRMMCH&RC",
+                photo: "navaneetha.jpg",
+                linkedin: "https://www.linkedin.com/in/navaneethakali"
+            },
+            { 
+                name: "Dr. Edukondalu A.D. MD", 
+                title: "Medical Superintendent", 
+                organization: "TSRMMCH&RC",
+                photo: "edukondalu.png",
+            },
+            { 
+                name: "Dr. R. Balaji Ganesh ME, PhD", 
+                title: "Associate Professor", 
+                organization: "Faculty of Eng & Technology, SRMIST, Trichy",
+                photo: "balaji.jpg",
+                linkedin: "https://www.linkedin.com/in/rbalajiganesh?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+            },
+            { 
+                name: "Dr. R Jagadish Kannan ME. PhD", 
+                title: "IST Dean", 
+                organization: "Faculty of Eng & Technology, SRMIST, Trichy",
+                photo: "jagadheesh.jpg",
+                linkedin: "https://www.linkedin.com/in/r-jagadeesh-kannan-2517701ab?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+            },
+             { 
+                name: "Mr.M.Rufus Shakin ,B.E,MBA (Phd).",
+                title: "Manager", 
+                organization: "Operations And Quality,TSRMMCH&RH",
+                photo: "Rufus final.jpeg",
+                email: "rufus@mc.srmtrichy.edu.in",
+                linkedin: "https://www.linkedin.com/in/rufusshakin?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+            }
+        ];
+
+        const leadership = [
+            { 
+                name: "Dr. R. Shivakumar, M.D., Ph.D.",
+                title: "Honorable Chairman",
+                organization: "SRM Group of Institutions, Ramapuram, Chennai & Trichy",
+                photo: "chairman.jpg",
+                
+            },
+            { 
+                name: "Shri. S. Niranjan",
+                title: "Co-Chairman",
+                organization: "SRM Group of Institutions, Ramapuram, Chennai & Trichy",
+                photo: "CC.jpeg",
+                
+            },
+            { 
+                name: "Prof. Dr. N. Sethuraman",
+                title: "Chief Director",
+                organization: "SRM Group of Institutions, Ramapuram, Chennai & Trichy",
+                photo: "CD.jpeg",
+                
+            },
+            { 
+                name: "Prof. (Dr.) Md. Sameeruddin Khan",
+                title: "Pro Vice Chancellor",
+                organization: "SRMIST, Trichy",
+                photo: "PVC.jpeg",
+                
+            },
+            { 
+                name: "Dr.Karthikeyan Rajagopal",
+                title: "Director - Research",
+                organization: "SRM Group of Institutions, Ramapuram, Chennai & Trichy",
+                photo: "Director Research.jpeg",
+                
+            },
+            { 
+                name: "Dr. N. Balasubramanian",
+                title: "Deputy Director",
+                organization: "SRM Group Institutions, Trichy",
+                photo: "DD.jpeg",
+                
+            },
+            { 
+                name: "Dr. S. Rewathy",
+                title: "Director, Professor of OBG",
+                organization: "TSRMMCH&RC",
+                photo: "rewathy.png",
+               
+            },
+            { 
+                name: "Dr. K. N. Gopakumaran Kartha",
+                title: "Dean",
+                organization: "TSRMMCH&RC",
+                photo: "dean.png",
+                
+            },
+            
+            { 
+                name: "Dr. A. D. Edukondalu",
+                title: "Medical Superintendent",
+                organization: "TSRMMCH&RC",
+                photo: "edukondalu.png",
+            
+            },
+            { 
+                name: "Dr.U.Jayasimha Raj",
+                title: "Professor & Head Of the Department",
+                organization: "Department of dentistry TSRMMCHRC",
+                photo: "jsr.jpeg",
+                
+            }
+        ];
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderSchedule();
+            renderTimeline();
+            renderSpeakers();
+            renderLeadership();
+            setupMobileMenu();
+        });
+
+        // Render Functions
+        function renderSchedule() {
+            const grid = document.getElementById('scheduleGrid');
+            grid.innerHTML = schedule.map((item, index) => `
+                <div class="schedule-card">
+                    <div class="time">${item.time}</div>
+                    <div class="topic">${item.topic}</div>
+                    <div class="speaker"><strong>${item.speaker}</strong></div>
+                    <button class="view-btn" onclick="openScheduleDetail(${index})">View Details</button>
+                </div>
+            `).join('');
+        }
+
+        function renderTimeline() {
+            const timelineDiv = document.getElementById('timeline');
+            timelineDiv.innerHTML = timeline.map(item => `
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="time">${item.time}</div>
+                        <div class="activity">${item.activity}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderSpeakers() {
+            const grid = document.getElementById('speakersGrid');
+            grid.innerHTML = speakers.map((speaker, index) => `
+                <div class="speaker-card">
+                    <div class="speaker-photo">
+                        ${speaker.photo ? `<img src="${speaker.photo}" alt="${speaker.name}">` : 'Add Photo'}
+                    </div>
+                    <div class="speaker-info">
+                        <div class="name">${speaker.name}</div>
+                        <div class="title">${speaker.title}</div>
+                        <button class="view-btn" onclick="openSpeakerDetail(${index})">View Details</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderLeadership() {
+            const grid = document.getElementById('leadershipGrid');
+            grid.innerHTML = leadership.map((leader, index) => `
+                <div class="leader-card">
+                    <div class="leader-photo">
+                        ${leader.photo ? `<img src="${leader.photo}" alt="${leader.name}">` : 'Add Photo'}
+                    </div>
+                    <div class="leader-info">
+                        <div class="name">${leader.name}</div>
+                        <div class="title">${leader.title}</div>
+                        <div class="organization">${leader.organization}</div>
+                        <button class="view-btn" onclick="openLeaderDetail(${index})">View Details</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Modal Functions
+        function openScheduleDetail(index) {
+            const item = schedule[index];
+            const modal = document.getElementById('detailModal');
+            const title = document.getElementById('modalTitle');
+            const body = document.getElementById('modalBody');
+
+            title.textContent = item.topic;
+            body.innerHTML = `
+                <div class="detail-item">
+                    <div class="detail-label">Time</div>
+                    <div class="detail-value">${item.time}</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Speaker</div>
+                    <div class="detail-value">${item.speaker}</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Topic</div>
+                    <div class="detail-value">${item.topic}</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Category</div>
+                    <div class="detail-value">${item.interests}</div>
+                </div>
+            `;
+
+            modal.classList.add('active');
+        }
+
+        function openSpeakerDetail(index) {
+            const speaker = speakers[index];
+            const modal = document.getElementById('detailModal');
+            const title = document.getElementById('modalTitle');
+            const body = document.getElementById('modalBody');
+
+            title.textContent = speaker.name;
+            body.innerHTML = `
+                ${speaker.photo ? `<div class="modal-photo"><img src="${speaker.photo}" alt="${speaker.name}"></div>` : '<div class="modal-photo">Photo not added</div>'}
+                <div class="detail-item">
+                    <div class="detail-label">Designation</div>
+                    <div class="detail-value">${speaker.title}</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Organization</div>
+                    <div class="detail-value">${speaker.organization}</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Email</div>
+                    <div class="detail-value"><a href="mailto:${speaker.email}" style="color: var(--primary-green); text-decoration: none;">${speaker.email}</a></div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">LinkedIn</div>
+                    <div class="detail-value"><a href="${speaker.linkedin}" target="_blank" style="color: var(--primary-green); text-decoration: none;">View Profile</a></div>
+                </div>
+                <div class="contact-links">
+                    <a href="mailto:${speaker.email}" class="contact-link">📧 Email</a>
+                    <a href="${speaker.linkedin}" target="_blank" class="contact-link">🔗 LinkedIn</a>
+                </div>
+            `;
+
+            modal.classList.add('active');
+        }
+
+        function openLeaderDetail(index) {
+            const leader = leadership[index];
+            const modal = document.getElementById('detailModal');
+            const title = document.getElementById('modalTitle');
+            const body = document.getElementById('modalBody');
+
+            title.textContent = leader.name;
+            body.innerHTML = `
+                ${leader.photo ? `<div class="modal-photo"><img src="${leader.photo}" alt="${leader.name}"></div>` : '<div class="modal-photo">Photo not added</div>'}
+                <div class="detail-item">
+                    <div class="detail-label">Designation</div>
+                    <div class="detail-value">${leader.title}</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Organization</div>
+                    <div class="detail-value">${leader.organization}</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Email</div>
+                    <div class="detail-value"><a href="mailto:${leader.email}" style="color: var(--primary-green); text-decoration: none;">${leader.email}</a></div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">LinkedIn</div>
+                    <div class="detail-value"><a href="${leader.linkedin}" target="_blank" style="color: var(--primary-green); text-decoration: none;">View Profile</a></div>
+                </div>
+                <div class="contact-links">
+                    <a href="mailto:${leader.email}" class="contact-link">📧 Email</a>
+                    <a href="${leader.linkedin}" target="_blank" class="contact-link">🔗 LinkedIn</a>
+                </div>
+            `;
+
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('detailModal').classList.remove('active');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('detailModal');
+            if (event.target == modal) {
+                modal.classList.remove('active');
+            }
+        }
+
+        // Section Navigation
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        // Gallery Carousel
+        let currentSlideIndex = 0;
+
+        function changeSlide(n) {
+            const slides = document.querySelectorAll('.carousel-slide');
+            currentSlideIndex += n;
+            if (currentSlideIndex >= slides.length) currentSlideIndex = 0;
+            if (currentSlideIndex < 0) currentSlideIndex = slides.length - 1;
+            showSlide(currentSlideIndex);
+        }
+
+        function currentSlide(n) {
+            currentSlideIndex = n;
+            showSlide(currentSlideIndex);
+        }
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.dot');
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[n].classList.add('active');
+            dots[n].classList.add('active');
+        }
+
+        // Toggle Functions
+        function toggleSchedule() {
+            const btn = event.target;
+            const grid = document.getElementById('scheduleGrid');
+            if (grid.style.display === 'none') {
+                grid.style.display = 'grid';
+                btn.textContent = 'Hide All';
+            } else {
+                grid.style.display = 'none';
+                btn.textContent = 'Show All';
+            }
+        }
+
+        function toggleFlow() {
+            const btn = event.target;
+            const timeline = document.getElementById('timeline');
+            if (timeline.style.display === 'none') {
+                timeline.style.display = 'block';
+                btn.textContent = 'Hide All';
+            } else {
+                timeline.style.display = 'none';
+                btn.textContent = 'Show All';
+            }
+        }
+
+        function toggleSpeakers() {
+            const btn = event.target;
+            const grid = document.getElementById('speakersGrid');
+            if (grid.style.display === 'none') {
+                grid.style.display = 'grid';
+                btn.textContent = 'Hide All';
+            } else {
+                grid.style.display = 'none';
+                btn.textContent = 'Show All';
+            }
+        }
+
+        function toggleLeadership() {
+            const btn = event.target;
+            const grid = document.getElementById('leadershipGrid');
+            if (grid.style.display === 'none') {
+                grid.style.display = 'grid';
+                btn.textContent = 'Hide All';
+            } else {
+                grid.style.display = 'none';
+                btn.textContent = 'Show All';
+            }
+        }
+
+        // Mobile Menu
+        function setupMobileMenu() {
+            const hamburger = document.getElementById('hamburger');
+            hamburger.addEventListener('click', toggleMobileMenu);
+        }
+
+        function toggleMobileMenu() {
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
