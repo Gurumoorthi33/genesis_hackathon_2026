@@ -848,16 +848,16 @@
                 <h2 style="color: var(--dark-blue); margin-bottom: 30px;">Event Gallery</h2>
                 <div class="carousel">
                     <div class="carousel-slide active">
-                        <img src="" alt="Event Photo 1" onerror="this.textContent='Click to add photo'">
+                    <img src="public/images/chairman.jpg" alt="Event Photo 1" onerror="this.textContent='Image not available'">
                     </div>
                     <div class="carousel-slide">
-                        <img src="" alt="Event Photo 2" onerror="this.textContent='Click to add photo'">
+                    <img src="public/images/dean.png" alt="Event Photo 2" onerror="this.textContent='Image not available'">
                     </div>
                     <div class="carousel-slide">
-                        <img src="" alt="Event Photo 3" onerror="this.textContent='Click to add photo'">
+                    <img src="public/images/rufus.jpg" alt="Event Photo 3" onerror="this.textContent='Image not available'">
                     </div>
                     <div class="carousel-slide">
-                        <img src="" alt="Event Photo 4" onerror="this.textContent='Click to add photo'">
+                    <img src="public/images/balaji.jpg" alt="Event Photo 4" onerror="this.textContent='Image not available'">
                     </div>
                     <button class="carousel-nav carousel-prev" onclick="changeSlide(-1)">❮</button>
                     <button class="carousel-nav carousel-next" onclick="changeSlide(1)">❯</button>
@@ -1181,7 +1181,7 @@
             grid.innerHTML = speakers.map((speaker, index) => `
                 <div class="speaker-card">
                     <div class="speaker-photo">
-                        ${speaker.photo ? `<img src="${speaker.photo}" alt="${speaker.name}">` : 'Add Photo'}
+                        ${speaker.photo ? `<img src="public/images/${speaker.photo}" alt="${speaker.name}">` : 'Add Photo'}
                     </div>
                     <div class="speaker-info">
                         <div class="name">${speaker.name}</div>
@@ -1197,7 +1197,7 @@
             grid.innerHTML = leadership.map((leader, index) => `
                 <div class="leader-card">
                     <div class="leader-photo">
-                        ${leader.photo ? `<img src="${leader.photo}" alt="${leader.name}">` : 'Add Photo'}
+                        ${leader.photo ? `<img src="public/images/${leader.photo}" alt="${leader.name}">` : 'Add Photo'}
                     </div>
                     <div class="leader-info">
                         <div class="name">${leader.name}</div>
@@ -1247,7 +1247,7 @@
 
             title.textContent = speaker.name;
             body.innerHTML = `
-                ${speaker.photo ? `<div class="modal-photo"><img src="${speaker.photo}" alt="${speaker.name}"></div>` : '<div class="modal-photo">Photo not added</div>'}
+                ${speaker.photo ? `<div class="modal-photo"><img src="public/images/${speaker.photo}" alt="${speaker.name}"></div>` : '<div class="modal-photo">Photo not added</div>'}
                 <div class="detail-item">
                     <div class="detail-label">Designation</div>
                     <div class="detail-value">${speaker.title}</div>
@@ -1281,7 +1281,7 @@
 
             title.textContent = leader.name;
             body.innerHTML = `
-                ${leader.photo ? `<div class="modal-photo"><img src="${leader.photo}" alt="${leader.name}"></div>` : '<div class="modal-photo">Photo not added</div>'}
+                ${leader.photo ? `<div class="modal-photo"><img src="public/images/${leader.photo}" alt="${leader.name}"></div>` : '<div class="modal-photo">Photo not added</div>'}
                 <div class="detail-item">
                     <div class="detail-label">Designation</div>
                     <div class="detail-value">${leader.title}</div>
