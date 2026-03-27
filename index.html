@@ -908,7 +908,7 @@
             .lv-photos { min-height: 520px; }
             
             /* FEATURED LAYOUT: 60/40 Split */
-            .lv-topic.featured .lv-photos { flex: 1.5; }
+            .lv-topic.featured .lv-photos { flex: 1.5; min-height: 600px; }
             .lv-topic.featured .lv-details { flex: 1; }
         }
         .lv-photos {
@@ -927,7 +927,7 @@
         .lv-photos img {
             width: 100%; height: 100%;
             object-fit: cover;
-            object-position: top center;
+            object-position: center 20%;
             transition: transform 0.8s ease;
         }
         .lv-topic:hover .lv-photos img { transform: scale(1.04); }
@@ -1228,6 +1228,213 @@
             .ps-talk-summary { padding: 12px; }
             
             .speaker-photo { aspect-ratio: 3/4; }
+        }
+
+        /* ── STUDENTS INNOVATION GALLERY ── */
+        .sig-section {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #0a1628 0%, #0f2744 40%, #14412e 100%);
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(61,139,55,0.3);
+        }
+        .sig-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 20% 0%, rgba(61,139,55,0.15) 0%, transparent 60%),
+                        radial-gradient(ellipse at 80% 100%, rgba(255,193,7,0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .sig-header {
+            padding: 40px 36px 24px;
+            position: relative;
+            z-index: 1;
+        }
+        .sig-header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, rgba(61,139,55,0.25), rgba(61,139,55,0.1));
+            border: 1px solid rgba(61,139,55,0.35);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #7ddf72;
+            margin-bottom: 16px;
+        }
+        .sig-header-badge::before {
+            content: '';
+            width: 8px; height: 8px;
+            background: #7ddf72;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        .sig-header h2 {
+            font-size: 28px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #ffffff, #7ddf72);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .sig-header p {
+            font-size: 15px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.7;
+            max-width: 700px;
+        }
+        .sig-photo-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 4px;
+            padding: 0 4px;
+            position: relative;
+            z-index: 1;
+        }
+        .sig-photo-item {
+            position: relative;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .sig-photo-item img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(.4,0,.2,1), filter 0.3s;
+        }
+        .sig-photo-item:hover img {
+            transform: scale(1.08);
+            filter: brightness(1.1);
+        }
+        .sig-photo-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.4) 100%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+        .sig-photo-item:hover::after {
+            opacity: 1;
+        }
+        .sig-photo-item.sig-wide {
+            grid-column: span 2;
+        }
+        .sig-content-area {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+            padding: 28px 36px 36px;
+            position: relative;
+            z-index: 1;
+        }
+        .sig-content-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 24px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .sig-content-card:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(61,139,55,0.4);
+            transform: translateY(-4px);
+        }
+        .sig-content-card .sig-card-icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .sig-content-card h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 8px;
+        }
+        .sig-content-card p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.7;
+        }
+        .sig-stats {
+            display: flex;
+            gap: 24px;
+            padding: 0 36px 32px;
+            position: relative;
+            z-index: 1;
+        }
+        .sig-stat {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .sig-stat-value {
+            font-size: 22px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #7ddf72, #ffc107);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .sig-stat-label {
+            font-size: 11px;
+            color: rgba(255,255,255,0.45);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        .sig-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 0 36px 32px;
+            position: relative;
+            z-index: 1;
+        }
+        .sig-tag {
+            background: rgba(61,139,55,0.15);
+            border: 1px solid rgba(61,139,55,0.3);
+            color: #7ddf72;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 5px 14px;
+            border-radius: 100px;
+            transition: all 0.3s;
+        }
+        .sig-tag:hover {
+            background: rgba(61,139,55,0.3);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .sig-photo-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .sig-header { padding: 28px 20px 16px; }
+            .sig-content-area { padding: 20px; }
+            .sig-stats { padding: 0 20px 24px; flex-wrap: wrap; }
+            .sig-tags { padding: 0 20px 24px; }
+            .sig-header h2 { font-size: 22px; }
+        }
+        @media (max-width: 480px) {
+            .sig-photo-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .sig-photo-item.sig-wide {
+                grid-column: span 2;
+            }
+            .sig-content-area {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -1545,6 +1752,52 @@ const postSummitGallery = [
         topic: "AI in Dentistry Imagine 3D",
         summary: "Dr. T. Arun Kulandhaivel delivered a groundbreaking session on the practical applications of AI in modern dentistry. He demonstrated how AI-powered 3D imaging is revolutionizing diagnosis, treatment planning, and patient outcomes in dental care. His talk covered predictive modeling for orthodontic treatments, automated cavity detection from radiographs, and the future of robotic-assisted dental procedures.",
         tags: ["Dentistry", "3D Imaging", "Orthodontics", "AI Diagnostics", "Clinical Practice"]
+    },
+    {
+        isStudentGallery: true,
+        name: "Students Innovation Gallery",
+        topic: "Student Innovation & Creative Thinking",
+        galleryPhotos: [
+            { src: "live_gallery.jpeg",  caption: "Poster Presentation — MediHue+ AI Drug Distribution System", wide: true },
+            { src: "live_gallery1.jpeg", caption: "Research Discussion — Tumor Microenvironment Analysis" },
+            { src: "live_gallery2.jpeg", caption: "Students Exploring Innovation Exhibits" },
+            { src: "live_gallery3.jpeg", caption: "AI-Assisted Docking for Dental Caries Inhibitors", wide: true },
+            { src: "live_gallery4.jpeg", caption: "Close-up — Dental Research Poster Analysis" },
+            { src: "live_gallery5.jpeg", caption: "Student Teams Discussing Personalised Risk Systems" },
+            { src: "live_gallery6.jpeg", caption: "Faculty Evaluating Student Prototypes" },
+            { src: "live_gallery7.jpeg", caption: "Crowd Engagement at Poster Gallery" },
+            { src: "live_gallery8.jpeg", caption: "Innovation Booth — Live Prototype Demonstrations" },
+            { src: "live_gallery11.jpeg", caption: "Award-Winning Project Presentation" }
+        ],
+        contentCards: [
+            {
+                icon: "🎨",
+                title: "Poster Presentations",
+                desc: "Students showcased cutting-edge research through visually compelling scientific posters covering AI in healthcare, drug discovery, dental informatics, and personalized risk prediction systems."
+            },
+            {
+                icon: "🔬",
+                title: "Prototype Demonstrations",
+                desc: "Live demonstrations of working prototypes including smart drug dispensers, AI-powered diagnostic tools, and IoT-based health monitoring systems built by interdisciplinary student teams."
+            },
+            {
+                icon: "💡",
+                title: "Creative Problem Solving",
+                desc: "Students combined medical knowledge with engineering innovation to develop real-world solutions addressing rural healthcare access, early disease detection, and clinical workflow optimization."
+            },
+            {
+                icon: "🏆",
+                title: "Awards & Recognition",
+                desc: "Outstanding projects were recognized for scientific merit, innovation impact, and presentation quality, with top entries receiving certificates and prizes from the GENESIS 2026 jury panel."
+            }
+        ],
+        stats: [
+            { value: "50+", label: "Posters" },
+            { value: "120+", label: "Students" },
+            { value: "15+", label: "Prototypes" },
+            { value: "8", label: "Awards" }
+        ],
+        tags: ["Poster Presentation", "Prototyping", "Student Innovation", "Creative Thinking", "AI in Healthcare", "Drug Discovery", "IoT", "Medical Devices", "Interdisciplinary Research"]
     }
 ];
 
@@ -1760,7 +2013,55 @@ document.getElementById('hamburger').addEventListener('click', () => {
 // ─── RENDER POST SUMMIT GALLERY ───────────────────────────
 function renderPostSummit() {
     document.getElementById('postSummitGrid').innerHTML = postSummitGallery.map((item, i) => {
-        // Support both single livePhoto and multiple livePhotos
+
+        // ── Student Innovation Gallery (special layout) ──
+        if (item.isStudentGallery) {
+            const photosHtml = item.galleryPhotos.map((p, pi) => 
+                `<div class="sig-photo-item ${p.wide ? 'sig-wide' : ''}" style="animation: slideUp 0.4s ${pi * 0.08}s both" title="${p.caption}">
+                    <img src="${imgPath(p.src)}" alt="${p.caption}" loading="lazy">
+                </div>`
+            ).join('');
+
+            const cardsHtml = item.contentCards.map(c =>
+                `<div class="sig-content-card">
+                    <span class="sig-card-icon">${c.icon}</span>
+                    <h4>${c.title}</h4>
+                    <p>${c.desc}</p>
+                </div>`
+            ).join('');
+
+            const statsHtml = item.stats.map(s =>
+                `<div class="sig-stat">
+                    <span class="sig-stat-value">${s.value}</span>
+                    <span class="sig-stat-label">${s.label}</span>
+                </div>`
+            ).join('');
+
+            const tagsHtml = item.tags.map(t => `<span class="sig-tag">${t}</span>`).join('');
+
+            return `
+            <div class="sig-section" style="animation: slideUp 0.6s ${i * 0.15}s both">
+                <div class="sig-header">
+                    <div class="sig-header-badge">Student Showcase</div>
+                    <h2>🎓 ${item.name}</h2>
+                    <p>A vibrant showcase of student-driven innovation, creative thinking, and interdisciplinary research at GENESIS 2026. From AI-powered healthcare prototypes to scientific poster presentations, students demonstrated the future of medical technology.</p>
+                </div>
+                <div class="sig-photo-grid">
+                    ${photosHtml}
+                </div>
+                <div class="sig-content-area">
+                    ${cardsHtml}
+                </div>
+                <div class="sig-stats">
+                    ${statsHtml}
+                </div>
+                <div class="sig-tags">
+                    ${tagsHtml}
+                </div>
+            </div>`;
+        }
+
+        // ── Regular speaker card ──
         const photos = item.livePhotos || [item.livePhoto];
         const isMulti = photos.length > 1;
 
