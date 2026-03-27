@@ -794,11 +794,39 @@
             padding: 4px 10px;
             border-radius: 100px;
         }
-        @media (max-width: 640px) {
-            .post-summit-grid {
-                grid-template-columns: 1fr;
-            }
-            .ps-card-img { height: 240px; }
+
+        /* ── PS MINI CAROUSEL (multiple photos per card) ── */
+        .ps-card-img { position: relative; }
+        .ps-card-img .ps-mini-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+        .ps-card-img .ps-mini-slide.active { position: relative; opacity: 1; }
+        .ps-card-img .ps-mini-slide img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+        .ps-mini-nav {
+            position: absolute;
+            bottom: 56px; right: 16px;
+            display: flex;
+            gap: 6px;
+            z-index: 5;
+        }
+        .ps-mini-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            border: 1.5px solid rgba(255,255,255,0.7);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .ps-mini-dot.active {
+            background: white;
+            transform: scale(1.2);
         }
 
         /* ── MODAL ── */
@@ -922,6 +950,62 @@
         }
 
         footer strong { color: white; }
+
+        /* ══════════ RESPONSIVE MULTI-DEVICE MEDIA QUERIES ══════════ */
+        
+        /* Large Tablets / Laptops */
+        @media (max-width: 1024px) {
+            .carousel { aspect-ratio: 16/10; }
+        }
+
+        /* Tablets & Landscape Mobile */
+        @media (max-width: 768px) {
+            .hero { padding: 80px 20px; }
+            .hero-pills { flex-direction: column; align-items: stretch; gap: 12px; }
+            .pill { padding: 12px 20px; text-align: left; display: flex; align-items: center; justify-content: space-between; }
+            .pill-label { margin-bottom: 0; }
+            .section-title { flex-direction: column; align-items: flex-start; gap: 16px; }
+            .carousel { aspect-ratio: 4/3; }
+        }
+
+        /* Standard Mobile */
+        @media (max-width: 640px) {
+            .content { padding: 40px 20px; }
+            .schedule-grid, .speakers-grid, .leadership-grid, .post-summit-grid {
+                grid-template-columns: 1fr;
+            }
+            .ps-card-img { height: 240px; }
+            
+            .modal-overlay { padding: 10px; }
+            .modal-box { 
+                height: 100%;
+                max-height: calc(100vh - 20px);
+                border-radius: 16px;
+            }
+            .modal-head { padding: 16px 20px; }
+            .modal-body { padding: 20px; }
+            .modal-img { height: 220px; }
+            .modal-links { flex-direction: column; gap: 12px; }
+            
+            .carousel { aspect-ratio: 1/1; border-radius: 12px; }
+            .carousel-btn { width: 36px; height: 36px; font-size: 16px; }
+        }
+
+        /* Small Mobile (e.g., SE, older phones) */
+        @media (max-width: 480px) {
+            .hero { padding: 60px 16px; }
+            .hero-badge { font-size: 10px; padding: 5px 12px; }
+            .hero-subtitle { font-size: 14px; }
+            
+            .content { padding: 32px 16px; }
+            .tab-btn { padding: 12px 16px; font-size: 13px; }
+            
+            .ps-card-img { height: 200px; }
+            .ps-speaker-avatar { width: 44px; height: 44px; }
+            .ps-talk-summary { padding: 12px; }
+            
+            .speaker-photo { aspect-ratio: 3/4; }
+        }
     </style>
 </head>
 <body>
@@ -1192,6 +1276,16 @@ const postSummitGallery = [
         topic: "AI-Powered Diagnostics in Radiology",
         summary: "Dr. P Ganesh delivered an insightful talk on the revolutionary impact of AI in radiology. He discussed how AI algorithms are enhancing diagnostic accuracy in CT scans, MRI, and X-ray analysis, enabling early detection of tumors and anomalies. His presentation highlighted real clinical case studies where AI-assisted radiology reduced diagnostic errors and improved patient outcomes significantly.",
         tags: ["Radiology", "AI Diagnostics", "Medical Imaging", "CT/MRI", "Early Detection"]
+    },
+    {
+        name: "Dr. A. Suguna MD",
+        designation: "Research Fellow",
+        org: "Public Health, TSRMMCH&RC",
+        photo: "suguna.jpeg",
+        livePhotos: ["live_suguna.jpeg", "live_suguna2.jpeg"],
+        topic: "AI-Driven Public Health Surveillance & Research",
+        summary: "Dr. A. Suguna presented a thought-provoking session on leveraging AI for public health research and disease surveillance. She explored how machine learning models can predict disease outbreaks, analyze population health trends, and optimize resource allocation in public health settings. Her talk also covered how big data analytics are reshaping healthcare policy formulation with real-world case studies on effective public health interventions.",
+        tags: ["Public Health", "AI Surveillance", "Epidemiology", "Predictive Analytics", "Healthcare Policy"]
     }
 ];
 
@@ -1365,10 +1459,20 @@ document.getElementById('hamburger').addEventListener('click', () => {
 
 // ─── RENDER POST SUMMIT GALLERY ───────────────────────────
 function renderPostSummit() {
-    document.getElementById('postSummitGrid').innerHTML = postSummitGallery.map((item, i) => `
+    document.getElementById('postSummitGrid').innerHTML = postSummitGallery.map((item, i) => {
+        // Support both single livePhoto and multiple livePhotos
+        const photos = item.livePhotos || [item.livePhoto];
+        const isMulti = photos.length > 1;
+
+        const imgHtml = isMulti
+            ? photos.map((p, pi) => `<div class="ps-mini-slide ${pi === 0 ? 'active' : ''}" data-card="${i}"><img src="${imgPath(p)}" alt="${item.name} presenting at GENESIS 2026"></div>`).join('')
+              + `<div class="ps-mini-nav">${photos.map((_, pi) => `<span class="ps-mini-dot ${pi === 0 ? 'active' : ''}" data-card="${i}" data-slide="${pi}" onclick="goMiniSlide(${i},${pi})"></span>`).join('')}</div>`
+            : `<img src="${imgPath(photos[0])}" alt="${item.name} presenting at GENESIS 2026" onerror="this.parentElement.innerHTML='<div class=slide-placeholder>📸</div>'">`;
+
+        return `
         <div class="ps-card" style="animation: slideUp 0.5s ${i * 0.15}s both">
             <div class="ps-card-img">
-                <img src="${imgPath(item.livePhoto)}" alt="${item.name} presenting at GENESIS 2026" onerror="this.parentElement.innerHTML='<div class=slide-placeholder>📸</div>'">
+                ${imgHtml}
                 <div class="ps-live-badge">Live Session</div>
                 <div class="ps-topic-badge">📌 ${item.topic}</div>
             </div>
@@ -1391,8 +1495,30 @@ function renderPostSummit() {
                     </div>
                 </div>
             </div>
-        </div>
-    `).join('');
+        </div>`;
+    }).join('');
+
+    // Auto-rotate mini slideshows
+    startMiniCarousels();
+}
+
+function goMiniSlide(cardIdx, slideIdx) {
+    const card = document.querySelectorAll('.ps-card')[cardIdx];
+    if (!card) return;
+    card.querySelectorAll('.ps-mini-slide').forEach((s, i) => s.classList.toggle('active', i === slideIdx));
+    card.querySelectorAll('.ps-mini-dot').forEach((d, i) => d.classList.toggle('active', i === slideIdx));
+}
+
+function startMiniCarousels() {
+    postSummitGallery.forEach((item, i) => {
+        const photos = item.livePhotos || [item.livePhoto];
+        if (photos.length <= 1) return;
+        let current = 0;
+        setInterval(() => {
+            current = (current + 1) % photos.length;
+            goMiniSlide(i, current);
+        }, 4000);
+    });
 }
 
 // ─── INIT ───────────────────────────────────────────────
