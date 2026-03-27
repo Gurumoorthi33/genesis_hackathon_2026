@@ -643,6 +643,164 @@
         }
         .dot.active { background: var(--green); width: 24px; }
 
+        /* ── POST SUMMIT GALLERY ── */
+        .post-summit-intro {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 40px;
+        }
+        .post-summit-intro p {
+            font-size: 15px;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+        .post-summit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 28px;
+        }
+        .ps-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.35s cubic-bezier(.4,0,.2,1);
+            position: relative;
+        }
+        .ps-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(15,39,68,0.15);
+            border-color: rgba(61,139,55,0.35);
+        }
+        .ps-card-img {
+            width: 100%;
+            height: 320px;
+            overflow: hidden;
+            position: relative;
+        }
+        .ps-card-img img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            transition: transform 0.5s cubic-bezier(.4,0,.2,1);
+        }
+        .ps-card:hover .ps-card-img img {
+            transform: scale(1.05);
+        }
+        .ps-card-img .ps-live-badge {
+            position: absolute;
+            top: 16px; left: 16px;
+            background: linear-gradient(135deg, #e53935, #ff5252);
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 16px rgba(229,57,53,0.4);
+        }
+        .ps-live-badge::before {
+            content: '';
+            width: 7px; height: 7px;
+            background: white;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+        .ps-card-img .ps-topic-badge {
+            position: absolute;
+            bottom: 16px; left: 16px; right: 16px;
+            background: rgba(15,39,68,0.85);
+            backdrop-filter: blur(12px);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 10px 16px;
+            border-radius: 12px;
+            line-height: 1.4;
+        }
+        .ps-card-body {
+            padding: 24px;
+        }
+        .ps-speaker-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+        .ps-speaker-avatar {
+            width: 52px; height: 52px;
+            border-radius: 14px;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 2px solid var(--green-light);
+        }
+        .ps-speaker-avatar img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+        }
+        .ps-speaker-meta h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 2px;
+        }
+        .ps-speaker-meta .ps-designation {
+            font-size: 12px;
+            color: var(--green);
+            font-weight: 600;
+            margin-bottom: 1px;
+        }
+        .ps-speaker-meta .ps-org {
+            font-size: 11px;
+            color: var(--muted);
+        }
+        .ps-talk-summary {
+            background: linear-gradient(135deg, rgba(61,139,55,0.06), rgba(15,39,68,0.04));
+            border: 1px solid rgba(61,139,55,0.12);
+            border-radius: 12px;
+            padding: 16px;
+        }
+        .ps-talk-summary h4 {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--green);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .ps-talk-summary p {
+            font-size: 13px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        .ps-talk-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 12px;
+        }
+        .ps-tag {
+            background: rgba(61,139,55,0.1);
+            color: var(--green-dark);
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 100px;
+        }
+        @media (max-width: 640px) {
+            .post-summit-grid {
+                grid-template-columns: 1fr;
+            }
+            .ps-card-img { height: 240px; }
+        }
+
         /* ── MODAL ── */
         .modal-overlay {
             display: none;
@@ -780,6 +938,7 @@
         </a>
         <nav id="desktopNav">
             <a onclick="showSection('gallery')" class="active">Gallery</a>
+            <a onclick="showSection('postsummit')">Post Summit</a>
             <a onclick="showSection('schedule')">Schedule</a>
             <a onclick="showSection('flow')">Event Flow</a>
             <a onclick="showSection('speakers')">Speakers</a>
@@ -794,6 +953,7 @@
 <!-- MOBILE NAV -->
 <div class="mobile-nav" id="mobileNav">
     <a onclick="showSection('gallery'); closeMobile()">🖼 Gallery</a>
+    <a onclick="showSection('postsummit'); closeMobile()">📸 Post Summit</a>
     <a onclick="showSection('schedule'); closeMobile()">📅 Schedule</a>
     <a onclick="showSection('flow'); closeMobile()">⏱ Event Flow</a>
     <a onclick="showSection('speakers'); closeMobile()">🎤 Speakers</a>
@@ -828,6 +988,7 @@
 <div class="page-tabs">
     <div class="tabs-inner">
         <button class="tab-btn active" onclick="showSection('gallery')">Gallery</button>
+        <button class="tab-btn" onclick="showSection('postsummit')">Post Summit</button>
         <button class="tab-btn" onclick="showSection('schedule')">Schedule</button>
         <button class="tab-btn" onclick="showSection('flow')">Event Flow</button>
         <button class="tab-btn" onclick="showSection('speakers')">Speakers</button>
@@ -866,6 +1027,19 @@
                 <div class="dot" onclick="goSlide(3)"></div>
             </div>
         </div>
+    </div>
+</section>
+
+<!-- ══════════ POST SUMMIT GALLERY ══════════ -->
+<section class="section" id="postsummit">
+    <div class="content">
+        <div class="section-title">
+            <h2><span>Live Moments</span>Post Summit Gallery</h2>
+        </div>
+        <div class="post-summit-intro">
+            <p>Relive the incredible moments from GENESIS 2026 — where world-class speakers shared groundbreaking insights on AI and its transformative role in modern medicine.</p>
+        </div>
+        <div class="post-summit-grid" id="postSummitGrid"></div>
     </div>
 </section>
 
@@ -997,6 +1171,30 @@ const leadership = [
     { name: "Dr. U. Jayasimha Raj",         title: "Professor & Head",         org: "Dept. of Dentistry, TSRMMCHRC",                 photo: "jsr.jpeg" }
 ];
 
+// Post Summit Gallery Data — add more items to this array to update the gallery
+const postSummitGallery = [
+    {
+        name: "Dr. R. Balaji Ganesh ME, PhD",
+        designation: "Associate Professor",
+        org: "Faculty of Eng & Tech, SRMIST Trichy",
+        photo: "balaji.jpg",
+        livePhoto: "live_balaji.jpeg",
+        topic: "Technical Integration of AI in Healthcare Systems",
+        summary: "Dr. Balaji Ganesh presented a compelling session on how AI can be technically integrated into existing healthcare infrastructure. He covered deep learning architectures for medical image analysis, real-time patient monitoring systems powered by IoT and AI, and demonstrated practical frameworks for deploying machine learning models in clinical settings. His talk bridged the gap between engineering research and real-world medical applications.",
+        tags: ["Deep Learning", "Healthcare AI", "IoT", "Medical Imaging", "ML Deployment"]
+    },
+    {
+        name: "Dr. P Ganesh MDRD",
+        designation: "Assistant Professor",
+        org: "Radiology, TSRMMCH&RC",
+        photo: "ganesh.jpeg",
+        livePhoto: "live_ganesh.jpeg",
+        topic: "AI-Powered Diagnostics in Radiology",
+        summary: "Dr. P Ganesh delivered an insightful talk on the revolutionary impact of AI in radiology. He discussed how AI algorithms are enhancing diagnostic accuracy in CT scans, MRI, and X-ray analysis, enabling early detection of tumors and anomalies. His presentation highlighted real clinical case studies where AI-assisted radiology reduced diagnostic errors and improved patient outcomes significantly.",
+        tags: ["Radiology", "AI Diagnostics", "Medical Imaging", "CT/MRI", "Early Detection"]
+    }
+];
+
 // ─── RENDER ───────────────────────────────────────────────
 function imgPath(file) { return `/images/${file}`; }
 
@@ -1119,7 +1317,7 @@ function showSection(id) {
     document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    const order = ['gallery','schedule','flow','speakers','leadership'];
+    const order = ['gallery','postsummit','schedule','flow','speakers','leadership'];
     const tabs = document.querySelectorAll('.tab-btn');
     tabs[order.indexOf(id)]?.classList.add('active');
     document.querySelectorAll('#desktopNav a').forEach(a => a.classList.remove('active'));
@@ -1165,11 +1363,44 @@ document.getElementById('hamburger').addEventListener('click', () => {
     document.getElementById('mobileNav').classList.toggle('open');
 });
 
+// ─── RENDER POST SUMMIT GALLERY ───────────────────────────
+function renderPostSummit() {
+    document.getElementById('postSummitGrid').innerHTML = postSummitGallery.map((item, i) => `
+        <div class="ps-card" style="animation: slideUp 0.5s ${i * 0.15}s both">
+            <div class="ps-card-img">
+                <img src="${imgPath(item.livePhoto)}" alt="${item.name} presenting at GENESIS 2026" onerror="this.parentElement.innerHTML='<div class=slide-placeholder>📸</div>'">
+                <div class="ps-live-badge">Live Session</div>
+                <div class="ps-topic-badge">📌 ${item.topic}</div>
+            </div>
+            <div class="ps-card-body">
+                <div class="ps-speaker-row">
+                    <div class="ps-speaker-avatar">
+                        <img src="${imgPath(item.photo)}" alt="${item.name}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 40 40%22><rect fill=%22%233d8b37%22 width=%2240%22 height=%2240%22/><text x=%2250%25%22 y=%2255%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2218%22>${item.name.charAt(0)}</text></svg>'">
+                    </div>
+                    <div class="ps-speaker-meta">
+                        <h3>${item.name}</h3>
+                        <div class="ps-designation">${item.designation}</div>
+                        <div class="ps-org">${item.org}</div>
+                    </div>
+                </div>
+                <div class="ps-talk-summary">
+                    <h4>🧠 Talk Highlights</h4>
+                    <p>${item.summary}</p>
+                    <div class="ps-talk-tags">
+                        ${item.tags.map(tag => `<span class="ps-tag">${tag}</span>`).join('')}
+                    </div>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
 // ─── INIT ───────────────────────────────────────────────
 renderSchedule();
 renderFlow();
 renderSpeakers();
 renderLeadership();
+renderPostSummit();
 </script>
 </body>
 </html>
