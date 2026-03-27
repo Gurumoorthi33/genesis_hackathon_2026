@@ -884,6 +884,12 @@
             grid-template-columns: 1fr 1fr;
             gap: 0;
         }
+        @media (min-width: 1024px) {
+            .lv-topic-body { display: flex; }
+            .lv-topic:nth-child(even) .lv-topic-body { flex-direction: row-reverse; }
+            .lv-photos, .lv-details { flex: 1; }
+            .lv-photos { min-height: 480px; }
+        }
         .lv-photos {
             position: relative;
             min-height: 360px;
@@ -900,7 +906,7 @@
         .lv-photos img {
             width: 100%; height: 100%;
             object-fit: cover;
-            object-position: center;
+            object-position: top center;
         }
         .lv-photos .ps-mini-nav {
             position: absolute;
@@ -1471,6 +1477,16 @@ const postSummitGallery = [
         topic: "AI-Driven Public Health Surveillance & Research",
         summary: "Dr. A. Suguna presented a thought-provoking session on leveraging AI for public health research and disease surveillance. She explored how machine learning models can predict disease outbreaks, analyze population health trends, and optimize resource allocation in public health settings. Her talk also covered how big data analytics are reshaping healthcare policy formulation with real-world case studies on effective public health interventions.",
         tags: ["Public Health", "AI Surveillance", "Epidemiology", "Predictive Analytics", "Healthcare Policy"]
+    },
+    {
+        name: "Dr. T. Arun Kulandhaivel MDS",
+        designation: "Corporate Head",
+        org: "32 Dental Care",
+        photo: "arun.jpeg",
+        livePhotos: ["live_arun.jpeg", "live_arun1.jpeg", "live_arun2.jpeg", "live_arun3.jpeg"],
+        topic: "AI in Dentistry Imagine 3D",
+        summary: "Dr. T. Arun Kulandhaivel delivered a groundbreaking session on the practical applications of AI in modern dentistry. He demonstrated how AI-powered 3D imaging is revolutionizing diagnosis, treatment planning, and patient outcomes in dental care. His talk covered predictive modeling for orthodontic treatments, automated cavity detection from radiographs, and the future of robotic-assisted dental procedures.",
+        tags: ["Dentistry", "3D Imaging", "Orthodontics", "AI Diagnostics", "Clinical Practice"]
     }
 ];
 
