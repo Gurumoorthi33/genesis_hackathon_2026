@@ -829,6 +829,175 @@
             transform: scale(1.2);
         }
 
+        /* ── LEADERSHIP & VISION SECTION ── */
+        .lv-intro {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 48px;
+        }
+        .lv-intro p {
+            font-size: 15px;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+        .lv-topic {
+            margin-bottom: 48px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.35s cubic-bezier(.4,0,.2,1);
+        }
+        .lv-topic:hover {
+            box-shadow: 0 16px 48px rgba(15,39,68,0.12);
+        }
+        .lv-topic-header {
+            background: linear-gradient(135deg, var(--navy), var(--green-dark));
+            color: white;
+            padding: 28px 32px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .lv-topic-icon {
+            width: 48px; height: 48px;
+            border-radius: 14px;
+            background: rgba(255,255,255,0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        .lv-topic-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+        }
+        .lv-topic-header p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+            margin-top: 2px;
+        }
+        .lv-topic-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+        .lv-photos {
+            position: relative;
+            min-height: 360px;
+            overflow: hidden;
+            background: #111;
+        }
+        .lv-photos .ps-mini-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.7s ease;
+        }
+        .lv-photos .ps-mini-slide.active { opacity: 1; }
+        .lv-photos img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        .lv-photos .ps-mini-nav {
+            position: absolute;
+            bottom: 16px; left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 5;
+        }
+        .lv-photos .ps-live-badge {
+            position: absolute;
+            top: 16px; left: 16px;
+            background: linear-gradient(135deg, #e53935, #ff5252);
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 16px rgba(229,57,53,0.4);
+            z-index: 5;
+        }
+        .lv-photos .ps-live-badge::before {
+            content: '';
+            width: 7px; height: 7px;
+            background: white;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+        .lv-details {
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .lv-speaker-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        .lv-speaker-avatar {
+            width: 60px; height: 60px;
+            border-radius: 16px;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 2px solid var(--green-light);
+        }
+        .lv-speaker-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .lv-speaker-meta h4 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 3px;
+        }
+        .lv-speaker-meta .lv-desig {
+            font-size: 12px;
+            color: var(--green);
+            font-weight: 600;
+        }
+        .lv-speaker-meta .lv-org {
+            font-size: 11px;
+            color: var(--muted);
+        }
+        .lv-content p {
+            font-size: 14px;
+            color: var(--text);
+            line-height: 1.8;
+        }
+        .lv-content .lv-highlight {
+            background: linear-gradient(135deg, rgba(61,139,55,0.06), rgba(15,39,68,0.04));
+            border-left: 3px solid var(--green);
+            border-radius: 0 12px 12px 0;
+            padding: 16px 20px;
+            margin-top: 16px;
+            font-size: 13px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media (max-width: 768px) {
+            .lv-topic-body { grid-template-columns: 1fr; }
+            .lv-photos { min-height: 260px; }
+            .lv-topic-header { padding: 20px 24px; }
+            .lv-details { padding: 24px; }
+        }
+        @media (max-width: 480px) {
+            .lv-photos { min-height: 220px; }
+            .lv-topic-header h3 { font-size: 18px; }
+            .lv-details { padding: 20px; }
+        }
+
         /* ── MODAL ── */
         .modal-overlay {
             display: none;
@@ -1023,6 +1192,7 @@
         <nav id="desktopNav">
             <a onclick="showSection('gallery')" class="active">Gallery</a>
             <a onclick="showSection('postsummit')">Post Summit</a>
+            <a onclick="showSection('leadershipvision')">Vision</a>
             <a onclick="showSection('schedule')">Schedule</a>
             <a onclick="showSection('flow')">Event Flow</a>
             <a onclick="showSection('speakers')">Speakers</a>
@@ -1038,6 +1208,7 @@
 <div class="mobile-nav" id="mobileNav">
     <a onclick="showSection('gallery'); closeMobile()">🖼 Gallery</a>
     <a onclick="showSection('postsummit'); closeMobile()">📸 Post Summit</a>
+    <a onclick="showSection('leadershipvision'); closeMobile()">🌟 Vision</a>
     <a onclick="showSection('schedule'); closeMobile()">📅 Schedule</a>
     <a onclick="showSection('flow'); closeMobile()">⏱ Event Flow</a>
     <a onclick="showSection('speakers'); closeMobile()">🎤 Speakers</a>
@@ -1073,6 +1244,7 @@
     <div class="tabs-inner">
         <button class="tab-btn active" onclick="showSection('gallery')">Gallery</button>
         <button class="tab-btn" onclick="showSection('postsummit')">Post Summit</button>
+        <button class="tab-btn" onclick="showSection('leadershipvision')">Vision</button>
         <button class="tab-btn" onclick="showSection('schedule')">Schedule</button>
         <button class="tab-btn" onclick="showSection('flow')">Event Flow</button>
         <button class="tab-btn" onclick="showSection('speakers')">Speakers</button>
@@ -1124,6 +1296,19 @@
             <p>Relive the incredible moments from GENESIS 2026 — where world-class speakers shared groundbreaking insights on AI and its transformative role in modern medicine.</p>
         </div>
         <div class="post-summit-grid" id="postSummitGrid"></div>
+    </div>
+</section>
+
+<!-- ══════════ LEADERSHIP & VISION ══════════ -->
+<section class="section" id="leadershipvision">
+    <div class="content">
+        <div class="section-title">
+            <h2><span>Inspiring Moments</span>Leadership and Vision</h2>
+        </div>
+        <div class="lv-intro">
+            <p>Witness the visionary leaders who shaped GENESIS 2026 — from the grand welcome of our distinguished Chief Guest to the inspiring inaugural address and thought-provoking discussions on the future of AI in healthcare.</p>
+        </div>
+        <div id="leadershipVisionGrid"></div>
     </div>
 </section>
 
@@ -1289,6 +1474,46 @@ const postSummitGallery = [
     }
 ];
 
+// Leadership & Vision Data
+const leadershipVisionData = [
+    {
+        icon: "🌟",
+        title: "Welcome to the Genesis",
+        subtitle: "Chief Guest Address",
+        name: "Mr. BD Vijaya",
+        designation: "Chief Guest",
+        org: "CTO, Motherson Health and Medical",
+        photo: "BD Vijaya.jpeg",
+        livePhotos: ["live_cheifguest1.jpeg", "live_chiefguest.jpeg", "live_chiefguest2.jpeg", "live_interaction.jpeg", "live_chiefguest3.jpeg"],
+        content: "The grand opening of GENESIS 2026 was marked by an inspiring welcome address delivered by our esteemed Chief Guest, Mr. BD Vijaya, CTO of Motherson Health and Medical. With decades of experience at the intersection of technology and healthcare, Mr. Vijaya set the tone for the conference by highlighting how artificial intelligence is no longer a distant dream but an active force transforming patient care, diagnostics, and healthcare management across the globe.",
+        highlight: "\"The convergence of AI and healthcare is not just a technological revolution — it is a humanitarian one. Every algorithm we build, every model we train, has the potential to save lives and improve the quality of care for millions.\" — Mr. BD Vijaya"
+    },
+    {
+        icon: "🏅",
+        title: "Inaugural Speech",
+        subtitle: "Ceremony & Address",
+        name: "Dr. U. Jayasimha Raj",
+        designation: "Professor & Head",
+        org: "Dept. of Dentistry, TSRMMCHRC",
+        photo: "jsr.jpeg",
+        livePhotos: ["live_inaugural.jpeg"],
+        content: "The inaugural ceremony was graced by Dr. U. Jayasimha Raj, Professor & Head of the Department of Dentistry at TSRMMCHRC. In his powerful address, Dr. Jayasimha Raj emphasized the role of interdisciplinary collaboration between medical professionals and technologists in advancing AI-driven healthcare solutions. He reflected on how GENESIS 2026 represents a milestone in bridging the gap between academic research and practical medical applications.",
+        highlight: "Dr. Jayasimha Raj formally inaugurated the conference, calling upon the next generation of medical professionals and engineers to work together in creating AI solutions that are ethical, accessible, and impactful."
+    },
+    {
+        icon: "🧠",
+        title: "Talks about Genesis with AI",
+        subtitle: "Visionary Discussion",
+        name: "Prof. (Dr.) Md. Sameeruddin Khan",
+        designation: "Pro Vice Chancellor",
+        org: "SRMIST, Trichy",
+        photo: "PVC.jpeg",
+        livePhotos: ["live_sameer.jpeg", "live_sameer1.jpeg", "live_sameer2.jpeg"],
+        content: "Prof. (Dr.) Md. Sameeruddin Khan, Pro Vice Chancellor of SRMIST Trichy, delivered a visionary talk on the symbiotic relationship between AI and the future of medical education and research. He outlined how SRMIST is pioneering the integration of AI curricula into medical training programs, fostering a new generation of tech-savvy healthcare professionals. His discussion covered the institutional vision for GENESIS as a recurring platform for innovation in AI-healthcare convergence.",
+        highlight: "\"GENESIS is not just a conference — it is a movement. Our vision is to make SRMIST a hub where AI innovation meets compassionate healthcare, producing graduates who can lead the digital transformation of medicine.\" — Prof. Sameeruddin Khan"
+    }
+];
+
 // ─── RENDER ───────────────────────────────────────────────
 function imgPath(file) { return `/images/${file}`; }
 
@@ -1411,7 +1636,7 @@ function showSection(id) {
     document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    const order = ['gallery','postsummit','schedule','flow','speakers','leadership'];
+    const order = ['gallery','postsummit','leadershipvision','schedule','flow','speakers','leadership'];
     const tabs = document.querySelectorAll('.tab-btn');
     tabs[order.indexOf(id)]?.classList.add('active');
     document.querySelectorAll('#desktopNav a').forEach(a => a.classList.remove('active'));
@@ -1521,12 +1746,80 @@ function startMiniCarousels() {
     });
 }
 
+// ─── RENDER LEADERSHIP & VISION ───────────────────────────
+function renderLeadershipVision() {
+    document.getElementById('leadershipVisionGrid').innerHTML = leadershipVisionData.map((item, i) => {
+        const photos = item.livePhotos || [];
+        const isMulti = photos.length > 1;
+
+        const imgHtml = isMulti
+            ? photos.map((p, pi) => `<div class="ps-mini-slide ${pi === 0 ? 'active' : ''}" data-lvcard="${i}"><img src="${imgPath(p)}" alt="${item.name} at GENESIS 2026"></div>`).join('')
+              + `<div class="ps-mini-nav">${photos.map((_, pi) => `<span class="ps-mini-dot ${pi === 0 ? 'active' : ''}" data-lvcard="${i}" data-lvslide="${pi}" onclick="goLVMiniSlide(${i},${pi})"></span>`).join('')}</div>`
+            : (photos[0] ? `<img src="${imgPath(photos[0])}" alt="${item.name}" onerror="this.parentElement.innerHTML='<div class=slide-placeholder>📸</div>'">` : '');
+
+        return `
+        <div class="lv-topic" style="animation: slideUp 0.5s ${i * 0.15}s both">
+            <div class="lv-topic-header">
+                <div class="lv-topic-icon">${item.icon}</div>
+                <div>
+                    <h3>${item.title}</h3>
+                    <p>${item.subtitle}</p>
+                </div>
+            </div>
+            <div class="lv-topic-body">
+                <div class="lv-photos">
+                    ${imgHtml}
+                    <div class="ps-live-badge">Live View</div>
+                </div>
+                <div class="lv-details">
+                    <div class="lv-speaker-row">
+                        <div class="lv-speaker-avatar">
+                            <img src="${imgPath(item.photo)}" alt="${item.name}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 40 40%22><rect fill=%22%233d8b37%22 width=%2240%22 height=%2240%22/><text x=%2250%25%22 y=%2255%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2218%22>${item.name.charAt(0)}</text></svg>'">
+                        </div>
+                        <div class="lv-speaker-meta">
+                            <h4>${item.name}</h4>
+                            <div class="lv-desig">${item.designation}</div>
+                            <div class="lv-org">${item.org}</div>
+                        </div>
+                    </div>
+                    <div class="lv-content">
+                        <p>${item.content}</p>
+                        <div class="lv-highlight">${item.highlight}</div>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+    }).join('');
+
+    startLVMiniCarousels();
+}
+
+function goLVMiniSlide(cardIdx, slideIdx) {
+    const card = document.querySelectorAll('.lv-topic')[cardIdx];
+    if (!card) return;
+    card.querySelectorAll('.lv-photos .ps-mini-slide').forEach((s, i) => s.classList.toggle('active', i === slideIdx));
+    card.querySelectorAll('.lv-photos .ps-mini-dot').forEach((d, i) => d.classList.toggle('active', i === slideIdx));
+}
+
+function startLVMiniCarousels() {
+    leadershipVisionData.forEach((item, i) => {
+        const photos = item.livePhotos || [];
+        if (photos.length <= 1) return;
+        let current = 0;
+        setInterval(() => {
+            current = (current + 1) % photos.length;
+            goLVMiniSlide(i, current);
+        }, 5000);
+    });
+}
+
 // ─── INIT ───────────────────────────────────────────────
 renderSchedule();
 renderFlow();
 renderSpeakers();
 renderLeadership();
 renderPostSummit();
+renderLeadershipVision();
 </script>
 </body>
 </html>
