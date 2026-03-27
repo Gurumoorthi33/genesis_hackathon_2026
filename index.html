@@ -1267,16 +1267,16 @@
         <div class="gallery-wrap">
             <div class="carousel">
                 <div class="carousel-slide active">
-                    <img src="/images/chairman.jpg" alt="Chairman" onerror="this.parentElement.innerHTML='<div class=slide-placeholder>🏛️</div>'">
+                    <img src="/images/chairman.jpg" alt="Chairman" loading="lazy" onerror="this.parentElement.innerHTML='<div class=slide-placeholder>🏛️</div>'">
                 </div>
                 <div class="carousel-slide">
-                    <img src="/images/dean.png" alt="Dean" onerror="this.parentElement.innerHTML='<div class=slide-placeholder>🎓</div>'">
+                    <img src="/images/dean.png" alt="Dean" loading="lazy" onerror="this.parentElement.innerHTML='<div class=slide-placeholder>🎓</div>'">
                 </div>
                 <div class="carousel-slide">
-                    <img src="/images/rufus.jpg" alt="Rufus Shakin" onerror="this.parentElement.innerHTML='<div class=slide-placeholder>👤</div>'">
+                    <img src="/images/rufus.jpg" alt="Rufus Shakin" loading="lazy" onerror="this.parentElement.innerHTML='<div class=slide-placeholder>👤</div>'">
                 </div>
                 <div class="carousel-slide">
-                    <img src="/images/balaji.jpg" alt="Balaji Ganesh" onerror="this.parentElement.innerHTML='<div class=slide-placeholder>👤</div>'">
+                    <img src="/images/balaji.jpg" alt="Balaji Ganesh" loading="lazy" onerror="this.parentElement.innerHTML='<div class=slide-placeholder>👤</div>'">
                 </div>
                 <button class="carousel-btn prev" onclick="changeSlide(-1)">‹</button>
                 <button class="carousel-btn next" onclick="changeSlide(1)">›</button>
@@ -1479,6 +1479,16 @@ const postSummitGallery = [
         tags: ["Public Health", "AI Surveillance", "Epidemiology", "Predictive Analytics", "Healthcare Policy"]
     },
     {
+        name: "Dr. B R ASOKAN MD",
+        designation: "Professor & HOD",
+        org: "Pharmacology, TSRMMCH&RC",
+        photo: "ashokan.png",
+        livePhotos: ["live_ashokan.jpeg", "live_ashokan1.jpeg", "live_ashokan3.jpeg"],
+        topic: "AI in Drug discovery",
+        summary: "Dr. B R ASOKAN delivered a comprehensive lecture on the intersection of artificial intelligence and pharmacological sciences. He explored how AI and machine learning algorithms are dramatically accelerating the drug discovery pipeline and improving target identification. The session highlighted case studies of AI models predicting drug-drug interactions and personalizing medicine by analyzing large genomics datasets, paving the way for safer and more effective therapeutic interventions.",
+        tags: ["Pharmacology", "Drug Discovery", "Machine Learning", "Precision Medicine"]
+    },
+    {
         name: "Dr. T. Arun Kulandhaivel MDS",
         designation: "Corporate Head",
         org: "32 Dental Care",
@@ -1559,7 +1569,7 @@ function renderSpeakers() {
         <div class="speaker-card">
             <div class="speaker-photo">
                 ${s.photo
-                    ? `<img src="${imgPath(s.photo)}" alt="${s.name}" onerror="this.parentElement.innerHTML='<div class=photo-placeholder>👤</div>'">`
+                    ? `<img src="${imgPath(s.photo)}" alt="${s.name}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=photo-placeholder>👤</div>'">`
                     : '<div class="photo-placeholder">👤</div>'}
             </div>
             <div class="speaker-info">
@@ -1576,7 +1586,7 @@ function renderLeadership() {
         <div class="leader-card">
             <div class="leader-photo">
                 ${l.photo
-                    ? `<img src="${imgPath(l.photo)}" alt="${l.name}" onerror="this.parentElement.innerHTML='<div style=font-size:48px;opacity:.2>👤</div>'">`
+                    ? `<img src="${imgPath(l.photo)}" alt="${l.name}" loading="lazy" onerror="this.parentElement.innerHTML='<div style=font-size:48px;opacity:.2>👤</div>'">`
                     : '<div style="font-size:48px;opacity:.2">👤</div>'}
             </div>
             <div class="leader-info">
@@ -1626,7 +1636,7 @@ function openSchedule(i) {
 function openSpeaker(i) {
     const s = speakers[i];
     const img = s.photo
-        ? `<div class="modal-img"><img src="${imgPath(s.photo)}" alt="${s.name}" onerror="this.parentElement.innerHTML='<div class=no-img>👤</div>'"></div>`
+        ? `<div class="modal-img"><img src="${imgPath(s.photo)}" alt="${s.name}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>👤</div>'"></div>`
         : `<div class="modal-img"><div class="no-img">👤</div></div>`;
     openModal(s.name, s.title, `${img}
         ${detailRow('Designation', s.title)}
@@ -1639,7 +1649,7 @@ function openSpeaker(i) {
 function openLeader(i) {
     const l = leadership[i];
     const img = l.photo
-        ? `<div class="modal-img"><img src="${imgPath(l.photo)}" alt="${l.name}" onerror="this.parentElement.innerHTML='<div class=no-img>👤</div>'"></div>`
+        ? `<div class="modal-img"><img src="${imgPath(l.photo)}" alt="${l.name}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>👤</div>'"></div>`
         : `<div class="modal-img"><div class="no-img">👤</div></div>`;
     openModal(l.name, l.title, `${img}
         ${detailRow('Designation', l.title)}
@@ -1706,9 +1716,9 @@ function renderPostSummit() {
         const isMulti = photos.length > 1;
 
         const imgHtml = isMulti
-            ? photos.map((p, pi) => `<div class="ps-mini-slide ${pi === 0 ? 'active' : ''}" data-card="${i}"><img src="${imgPath(p)}" alt="${item.name} presenting at GENESIS 2026"></div>`).join('')
+            ? photos.map((p, pi) => `<div class="ps-mini-slide ${pi === 0 ? 'active' : ''}" data-card="${i}"><img src="${imgPath(p)}" alt="${item.name} presenting at GENESIS 2026" loading="lazy"></div>`).join('')
               + `<div class="ps-mini-nav">${photos.map((_, pi) => `<span class="ps-mini-dot ${pi === 0 ? 'active' : ''}" data-card="${i}" data-slide="${pi}" onclick="goMiniSlide(${i},${pi})"></span>`).join('')}</div>`
-            : `<img src="${imgPath(photos[0])}" alt="${item.name} presenting at GENESIS 2026" onerror="this.parentElement.innerHTML='<div class=slide-placeholder>📸</div>'">`;
+            : `<img src="${imgPath(photos[0])}" alt="${item.name} presenting at GENESIS 2026" loading="lazy" onerror="this.parentElement.innerHTML='<div class=slide-placeholder>📸</div>'">`;
 
         return `
         <div class="ps-card" style="animation: slideUp 0.5s ${i * 0.15}s both">
@@ -1720,7 +1730,7 @@ function renderPostSummit() {
             <div class="ps-card-body">
                 <div class="ps-speaker-row">
                     <div class="ps-speaker-avatar">
-                        <img src="${imgPath(item.photo)}" alt="${item.name}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 40 40%22><rect fill=%22%233d8b37%22 width=%2240%22 height=%2240%22/><text x=%2250%25%22 y=%2255%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2218%22>${item.name.charAt(0)}</text></svg>'">
+                        <img src="${imgPath(item.photo)}" alt="${item.name}" loading="lazy" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 40 40%22><rect fill=%22%233d8b37%22 width=%2240%22 height=%2240%22/><text x=%2250%25%22 y=%2255%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2218%22>${item.name.charAt(0)}</text></svg>'">
                     </div>
                     <div class="ps-speaker-meta">
                         <h3>${item.name}</h3>
@@ -1769,9 +1779,9 @@ function renderLeadershipVision() {
         const isMulti = photos.length > 1;
 
         const imgHtml = isMulti
-            ? photos.map((p, pi) => `<div class="ps-mini-slide ${pi === 0 ? 'active' : ''}" data-lvcard="${i}"><img src="${imgPath(p)}" alt="${item.name} at GENESIS 2026"></div>`).join('')
+            ? photos.map((p, pi) => `<div class="ps-mini-slide ${pi === 0 ? 'active' : ''}" data-lvcard="${i}"><img src="${imgPath(p)}" alt="${item.name} at GENESIS 2026" loading="lazy"></div>`).join('')
               + `<div class="ps-mini-nav">${photos.map((_, pi) => `<span class="ps-mini-dot ${pi === 0 ? 'active' : ''}" data-lvcard="${i}" data-lvslide="${pi}" onclick="goLVMiniSlide(${i},${pi})"></span>`).join('')}</div>`
-            : (photos[0] ? `<img src="${imgPath(photos[0])}" alt="${item.name}" onerror="this.parentElement.innerHTML='<div class=slide-placeholder>📸</div>'">` : '');
+            : (photos[0] ? `<img src="${imgPath(photos[0])}" alt="${item.name}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=slide-placeholder>📸</div>'">` : '');
 
         return `
         <div class="lv-topic" style="animation: slideUp 0.5s ${i * 0.15}s both">
@@ -1790,7 +1800,7 @@ function renderLeadershipVision() {
                 <div class="lv-details">
                     <div class="lv-speaker-row">
                         <div class="lv-speaker-avatar">
-                            <img src="${imgPath(item.photo)}" alt="${item.name}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 40 40%22><rect fill=%22%233d8b37%22 width=%2240%22 height=%2240%22/><text x=%2250%25%22 y=%2255%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2218%22>${item.name.charAt(0)}</text></svg>'">
+                            <img src="${imgPath(item.photo)}" alt="${item.name}" loading="lazy" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 40 40%22><rect fill=%22%233d8b37%22 width=%2240%22 height=%2240%22/><text x=%2250%25%22 y=%2255%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2218%22>${item.name.charAt(0)}</text></svg>'">
                         </div>
                         <div class="lv-speaker-meta">
                             <h4>${item.name}</h4>
